@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createStackNavigator} from '@react-navigation/stack'
 import { Text,View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -15,15 +16,11 @@ import { Home } from './navigation/home';
 import { ProfileStack } from './profilestack';
 
 
-
-
-
-
 const Tab = createBottomTabNavigator();
 
-const App = () => {
+const Tabbar = () => {
   return (
-   <NavigationContainer>
+
     <Tab.Navigator>
     <Tab.Screen
           name="Home"
@@ -113,8 +110,22 @@ const App = () => {
 
 
     </Tab.Navigator>
-   </NavigationContainer>
+
   );
+}
+
+
+const App =()=>{
+  const Stack = createStackNavigator();
+  return(
+    <NavigationContainer>
+    <Stack.Navihator>
+    <Stack.Screen name="home" component={Home}/>
+     <Stack.Screen name="Tabs" component={Tabbar}/>
+    </Stack.Navigator>
+    </NavigationContainer>
+    
+  )
 }
 
 
